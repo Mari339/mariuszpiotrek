@@ -27,6 +27,13 @@ long long dzialanie(long long a, long long b, string znak)
         }
         else if(znak=="/")
             wynik=a/b;
+        else if(znak=="&")
+        {
+            if(a%b==0)
+                wynik=a*b;
+            else
+                wynik=a-b;
+        }
     }
     return wynik;
 }
@@ -34,9 +41,9 @@ long long dzialanie(long long a, long long b, string znak)
 int main()
 {
     ifstream in;
-    in.open("testin.txt");
+    in.open("in4.txt");
     ofstream out;
-    out.open("out3.txt");
+    out.open("out4.txt");
     long long a;
     long long b;
     long long wynik;
