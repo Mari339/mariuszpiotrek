@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 
 using namespace std;
 
@@ -32,34 +33,39 @@ long long dzialanie(long long a, long long b, string znak)
 
 int main()
 {
+    ifstream in;
+    in.open("testin.txt");
+    ofstream out;
+    out.open("out3.txt");
     long long a;
     long long b;
     long long wynik;
     string znak;
     do
     {
-        cin >> a >> znak >> b;
+        in >> a >> znak >> b;
         if(a==5)
             wynik=0;
         else
             wynik=dzialanie(a,b,znak);
-        cin >> znak;
+        in >> znak;
         while(znak!="==")
         {
             if(znak=="=")
             {
-                cout << wynik << endl;
+                out << wynik << endl;
                 break;
             }
             else
             {
-                cin >> a;
+                in >> a;
                 wynik=dzialanie(wynik,a,znak);
-                cin >> znak;
+                in >> znak;
             }
         }
     }
     while(znak!="==");
-    cout << wynik;
+    out << wynik;
+    in.close();
     return 0;
 }
