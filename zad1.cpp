@@ -6,22 +6,27 @@ using namespace std;
 long long dzialanie(long long a, long long b, string znak)
 {
     long long wynik;
-    if(znak=="+")
-        wynik=a+b;
-    else if(znak=="-")
-        wynik=a-b;
-    else if(znak=="*")
-        wynik=a*b;
-    else if(znak=="^")
-    {
+    if(b==5)
         wynik=a;
-        for(int i=1;i<b;i++)
-            wynik=wynik*a;
-        if(b==0)
-            wynik=1;
+    else
+    {
+        if(znak=="+")
+            wynik=a+b;
+        else if(znak=="-")
+            wynik=a-b;
+        else if(znak=="*")
+            wynik=a*b;
+        else if(znak=="^")
+        {
+            wynik=a;
+            for(int i=1; i<b; i++)
+                wynik=wynik*a;
+            if(b==0)
+                wynik=1;
+        }
+        else if(znak=="/")
+            wynik=a/b;
     }
-    else if(znak=="/")
-        wynik=a/b;
     return wynik;
 }
 
@@ -34,7 +39,10 @@ int main()
     do
     {
         cin >> a >> znak >> b;
-        wynik=dzialanie(a,b,znak);
+        if(a==5)
+            wynik=0;
+        else
+            wynik=dzialanie(a,b,znak);
         cin >> znak;
         while(znak!="==")
         {
@@ -45,12 +53,13 @@ int main()
             }
             else
             {
-            cin >> a;
-            wynik=dzialanie(wynik,a,znak);
-            cin >> znak;
+                cin >> a;
+                wynik=dzialanie(wynik,a,znak);
+                cin >> znak;
             }
         }
-    }while(znak!="==");
+    }
+    while(znak!="==");
     cout << wynik;
     return 0;
 }
