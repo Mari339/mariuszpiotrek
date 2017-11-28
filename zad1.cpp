@@ -3,14 +3,26 @@
 
 using namespace std;
 
-long long dodawanie(long long a, long long b)
+long long dzialanie(long long a, long long b, string znak)
 {
-    return a+b;
-}
-
-long long odejmowanie(long long a, long long b)
-{
-    return a-b;
+    long long wynik;
+    if(znak=="+")
+        wynik=a+b;
+    else if(znak=="-")
+        wynik=a-b;
+    else if(znak=="*")
+        wynik=a*b;
+    else if(znak=="^")
+    {
+        wynik=a;
+        for(int i=1;i<b;i++)
+            wynik=wynik*a;
+        if(b==0)
+            wynik=1;
+    }
+    else if(znak=="/")
+        wynik=a/b;
+    return wynik;
 }
 
 int main()
@@ -22,10 +34,7 @@ int main()
     do
     {
         cin >> a >> znak >> b;
-        if(znak=="+")
-            wynik=dodawanie(a,b);
-        else if(znak=="-")
-            wynik=odejmowanie(a,b);
+        wynik=dzialanie(a,b,znak);
         cin >> znak;
         while(znak!="==")
         {
@@ -37,13 +46,11 @@ int main()
             else
             {
             cin >> a;
-            if(znak=="+")
-                wynik=dodawanie(a,wynik);
-            else if(znak=="-")
-                wynik=odejmowanie(a,wynik);
+            wynik=dzialanie(wynik,a,znak);
             cin >> znak;
             }
         }
     }while(znak!="==");
+    cout << wynik;
     return 0;
 }
