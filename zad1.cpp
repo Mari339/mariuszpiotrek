@@ -20,6 +20,8 @@ long long dzialanie(long long a, long long b, string znak)
         if(b==0)
             wynik=1;
     }
+    else if(znak=="/")
+        wynik=a/b;
     return wynik;
 }
 
