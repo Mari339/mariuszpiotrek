@@ -31,7 +31,7 @@ int main()
         {
             if(znak=="=")
             {
-                cout << wynik;
+                cout << wynik << endl;
                 break;
             }
             else
